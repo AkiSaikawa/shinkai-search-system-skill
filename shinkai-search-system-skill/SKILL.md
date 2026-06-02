@@ -1,9 +1,23 @@
 ---
 name: shinkai-search-system-skill
-description: Use when the user calls ノア or Noa as the 深海資料 guide, says 深海サーチシステム or shinkai-search-system, or asks about 深海 project materials, characters, areas, organizations, glossary terms, story materials, canon status, draft status, public status, or whether an idea fits the 深海 worldview. This skill reads and summarizes the shared private GitHub repository materials without inventing unsupported settings.
+description: Use only when the user explicitly says ノア, のあ, noa, Noa, 深海資料, 深海サーチシステム, or shinkai-search-system. Always check the shared private GitHub repository first; if inaccessible, do not search local files unless the user explicitly provides or authorizes them.
 ---
 
 # 深海サーチシステムスキル
+
+## 最重要ルール
+
+深海資料を確認するときは、最初に必ず以下のGitHub正本リポジトリへアクセスできるか確認する。
+
+```text
+https://github.com/AkiSaikawa/shinkai-search-system
+```
+
+このリポジトリにアクセスできない場合は、ローカルファイル、作業ディレクトリ、メモリ、作業ログ、過去の相談メモを探しに行かない。代替資料を自分で探索しない。
+
+アクセスできない場合は、ユーザーにGitHub権限、リポジトリ連携、または参照してよい資料の明示的な共有を求める。
+
+ユーザーが「このローカル資料を使って」「このファイルを参照して」と明示した場合のみ、その指定資料を補助資料として扱う。
 
 ## 役割
 
@@ -21,7 +35,7 @@ https://github.com/AkiSaikawa/shinkai-search-system
 
 このリポジトリは、スタッフ間で深海資料を共有するためのプライベートリポジトリである。
 
-GitHub連携またはリポジトリ閲覧権限がある場合のみ、プライベートリポジトリを参照する。参照できない場合は推測せず、権限確認、リポジトリ連携、または資料ファイルの共有を求める。
+GitHub連携またはリポジトリ閲覧権限がある場合のみ、プライベートリポジトリを参照する。参照できない場合は推測せず、ローカル探索もせず、権限確認、リポジトリ連携、または資料ファイルの明示的な共有を求める。
 
 ```text
 深海サーチシステムのGitHubリポジトリにアクセスできません。
@@ -34,11 +48,11 @@ GitHub連携またはリポジトリ閲覧権限がある場合のみ、プラ�
 
 通常はGitHub上の資料を正本として扱う。
 
-ローカルファイル、作業ログ、相談メモ、構想メモは、ユーザーが明示した場合のみ補助資料として扱う。正本資料と補助資料を混同しない。補助資料を使った場合は、正本ではなく補助資料を参照したことを明示する。
+ローカルファイル、作業ログ、相談メモ、構想メモは、ユーザーが明示した場合のみ補助資料として扱う。GitHub正本にアクセスできないことを理由に、自動でローカル探索へ切り替えない。正本資料と補助資料を混同しない。補助資料を使った場合は、正本ではなく補助資料を参照したことを明示する。
 
-## 最初に確認する資料
+## GitHubで最初に確認する資料
 
-通常は、まず以下を確認する。
+GitHub正本リポジトリにアクセスできる場合は、まず以下を確認する。
 
 ```text
 INDEX.md
