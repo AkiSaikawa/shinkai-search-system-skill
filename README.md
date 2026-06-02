@@ -2,7 +2,7 @@
 
 深海サーチシステム用の Codex スキルです。
 
-このスキルは、スタッフ間で共有する private GitHub リポジトリ `AkiSaikawa/shinkai-search-system` を正本資料として参照し、深海プロジェクトの資料確認を行うための案内役として使います。
+このスキルは、スタッフ間で共有する private GitHub リポジトリ `shinkai-project/shinkai-search-system` を正本資料として扱い、通常は各スタッフPCのローカルクローンを参照して、深海プロジェクトの資料確認を行うための案内役として使います。
 
 このリポジトリには、深海資料本体は含まれていません。スキルをインストールすることと、深海資料リポジトリへアクセスできることは別です。
 
@@ -11,8 +11,10 @@
 - 「ノア / Noa」を、深海資料を確認するための軽い呼び名として扱う
 - 深海資料を探し、要約し、未確認点を分ける
 - 資料にない内容を勝手に確定しない
-- private GitHub リポジトリにアクセスできない場合は、推測せず権限確認を促す
-- private GitHub リポジトリにアクセスできない場合でも、ローカルファイルや作業ログを自動で探さない
+- 通常は `shinkai-project/shinkai-search-system` のローカルクローンを優先して参照する
+- ローカルクローンは読み取り専用ミラーとして扱い、通常回答では編集・commit・pushしない
+- ローカルクローンや private GitHub リポジトリにアクセスできない場合は、推測せず権限確認や参照場所の共有を促す
+- アクセスできない場合でも、無関係なローカルファイルや作業ログを自動で探さない
 
 ## インストール
 
@@ -41,12 +43,27 @@ C:\Users\<user>\.codex\skills\shinkai-search-system-skill
 正本資料は以下の private GitHub リポジトリです。
 
 ```text
-https://github.com/AkiSaikawa/shinkai-search-system
+https://github.com/shinkai-project/shinkai-search-system
 ```
 
-利用者は、このリポジトリへの閲覧権限またはGitHub連携を持っている必要があります。
+利用者は、このリポジトリへの閲覧権限を持ち、通常はローカルクローンを作成して使います。
 
-このリポジトリにアクセスできない場合、スキルはローカルファイル、作業ディレクトリ、作業ログ、過去の相談メモを自動で探しません。
+標準的なローカルクローン場所:
+
+```text
+~/Documents/GitHub/shinkai-search-system
+~/GitHub/shinkai-search-system
+```
+
+任意の場所にcloneした場合は、環境変数 `SHINKAI_SEARCH_SYSTEM_PATH` にローカルクローンのパスを設定してください。
+
+Windowsの例:
+
+```powershell
+setx SHINKAI_SEARCH_SYSTEM_PATH "C:\Users\ユーザー名\Documents\GitHub\shinkai-search-system"
+```
+
+ローカルクローンもGitHub正本も参照できない場合、スキルはローカルファイル、作業ディレクトリ、作業ログ、過去の相談メモを自動で探しません。
 
 ローカル資料を使う場合は、ユーザーが「このファイルを参照して」「このローカル資料を使って」のように、参照対象を明示する必要があります。
 
@@ -64,5 +81,7 @@ https://github.com/AkiSaikawa/shinkai-search-system
 
 - 正史判断、公開判断、採用判断はユーザーが行う
 - チャット履歴や作業ログを正本資料として扱わない
-- GitHub正本にアクセスできないことを理由に、ローカル資料へ自動で切り替えない
+- 通常回答では、ローカルクローンや正本資料を編集しない
+- 通常回答では、`git add`、`git commit`、`git push` を行わない
+- ローカルクローンやGitHub正本にアクセスできないことを理由に、無関係なローカル資料へ自動で切り替えない
 - 公開状況が資料内に書かれていない場合は「未整理」と扱う
